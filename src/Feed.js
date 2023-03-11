@@ -20,8 +20,11 @@ function Feed() {
   //   everytime a post gets added, it will give us a snapshot
   //   An open parenthesis in an arrow function implies a return
 
+  // once "Feed()" gets called, useEffect is run
   useEffect(() => {
-    db.collection("posts").onSnapshot(snapshot => (
+    db.collection("posts")
+    .orderBy('timestamp', 'desc')
+    .onSnapshot(snapshot => (
         setPosts(snapshot.docs.map(doc => (
             {
                 id: doc.id,
@@ -32,7 +35,7 @@ function Feed() {
   }, [])
 
   const sendPost = e => { /* e is short for "event" */
-    e.preventDefault(); /* prevents the default behaviour of refreshing */
+    e.preventDefault(); /* prevents the default behaviour of refreshing when submitting a post*/
     db.collection('posts').add({
         name: "Jachak Sekhon",
         description: "This is a test",
@@ -40,6 +43,9 @@ function Feed() {
         photoUrl: '',
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     })
+
+    setInput("");
+
   };
 
   return (
@@ -59,9 +65,15 @@ function Feed() {
                 <InputOption Icon={CalendarViewDayIcon} title="Write Article" color="#7FC15E"/>
             </div>
         </div>
-        {posts.map((post) => (<Post />)) }
-        <Post name="Jachak Sekhon" description="Testing" message="this is actually working"/>
-
+        {posts.map(({ id, data: {name, description, message, photoUrl } }) => (
+            <Post 
+                key={id}
+                name={name}
+                description={description}
+                message={message}
+                photoUrl={photoUrl}
+            />
+        ))}
     </div>
   )
 }
