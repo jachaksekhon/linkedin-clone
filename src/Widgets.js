@@ -25,8 +25,9 @@ function Widgets() {
   return (
     <div className="widgets">
         <div className="widgets__header">
-            <h2>LinkedIn News</h2>
+            <h2>LinkedIn News </h2>
             <InfoIcon />
+            
         </div>
         <>
             {newsArticle("Jachak is learning to code in react", "Learning - 5,312 readers")}
