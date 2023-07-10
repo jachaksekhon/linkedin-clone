@@ -5,9 +5,9 @@ A linkedin clone made using Redux-React for the front end and Firebase for hosti
 ![image](https://github.com/jachaksekhon/linkedin-clone/assets/75883758/1faad55b-57b1-4a87-9de6-9c4005c16add)
 
 
-Reacts built in components such as useSelector & useDispatch were used to fetch current instances of user logins
-Reacts built in components such as useEffect loaded content based on user logins
-Posts were added to firebase through firebases built in functionalities
+Reacts built in components such as useSelector & useDispatch were used to fetch current instances of user logins\n
+Reacts built in components such as useEffect loaded content based on user logins\n
+Posts were added to firebase through firebases built in functionalities\n
 
 Link to the application: https://linkedinclone-909c1.web.app/
 
